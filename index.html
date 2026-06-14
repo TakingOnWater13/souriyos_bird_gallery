@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <title>Souriyo's Bird Gallery</title>
+</head>
+
+<body>
+
+    <header>
+        <h1>Souriyo's Bird Gallery</h1>
+    </header>
+
+    <div class="controls">
+        <input type="text" id="search" placeholder="Search birds or species...">
+
+        <select id="jumpFamily">
+            <option value="">Jump to family...</option>
+        </select>
+    </div>
+
+    <main id="gallery"></main>
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+
+        <button class="nav left">◀</button>
+        <img class="modal-content" id="modalImage">
+        <button class="nav right">▶</button>
+    </div>
+
+    <button id="backToTop" aria-label="Back to top">⬆</button>
+    <script>
+        let currentBird = null;
+        let currentImageIndex = 0;
+        let allBirds = [];
+        const modal = document.getElementById("imageModal");
+        const modalImage = document.getElementById("modalImage");
+        const closeBtn = document.querySelector(".close");
+
+        const leftBtn = document.querySelector(".nav.left");
+        const rightBtn = document.querySelector(".nav.right");
+
+        function openModal() {
+            modal.style.display = "block";
+            updateModalImage();
+        }
+
+        function updateModalImage() {
+            modalImage.src = currentBird.images[currentImageIndex];
+        }
+
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % currentBird.images.length;
+            updateModalImage();
+        }
+
+        function prevImage() {
+            currentImageIndex =
+                (currentImageIndex - 1 + currentBird.images.length) %
+                currentBird.images.length;
+
+            updateModalImage();
+        }
+        leftBtn.addEventListener("click", prevImage);
+        rightBtn.addEventListener("click", nextImage);
+
+        closeBtn.addEventListener("click", () => {
+            modal.style.display = "none";
+        });
+        document.addEventListener("keydown", (e) => {
+            if (modal.style.display === "block") {
+                if (e.key === "ArrowRight") nextImage();
+                if (e.key === "ArrowLeft") prevImage();
+                if (e.key === "Escape") modal.style.display = "none";
+            }
+        });
+        let touchStartX = 0;
+
+        modal.addEventListener("touchstart", (e) => {
+            touchStartX = e.touches[0].clientX;
+        });
+
+        modal.addEventListener("touchend", (e) => {
+            let touchEndX = e.changedTouches[0].clientX;
+
+            if (touchStartX - touchEndX > 50) nextImage();
+            if (touchEndX - touchStartX > 50) prevImage();
+        });
+        fetch("birds.json")
+            .then(res => res.json())
+            .then(data => {
+                allBirds = data;
+
+                populateFamilies(data);
+                renderBirds(data);
+            });
+        function renderBirds(list) {
+            const gallery = document.getElementById("gallery");
+            gallery.innerHTML = "";
+
+            const grouped = {};
+
+            list.forEach(bird => {
+                if (!grouped[bird.family]) {
+                    grouped[bird.family] = [];
+                }
+                grouped[bird.family].push(bird);
+            });
+
+            Object.keys(grouped).sort().forEach(family => {
+
+                const section = document.createElement("div");
+                section.className = "family-section";
+                section.id = `family-${family}`;
+
+                const title = document.createElement("h2");
+                title.className = "family-title";
+                title.textContent = family;
+
+                const grid = document.createElement("div");
+                grid.className = "family-grid";
+
+                grouped[family].forEach(bird => {
+                    grid.appendChild(createBirdCard(bird));
+                });
+
+                section.appendChild(title);
+                section.appendChild(grid);
+
+                gallery.appendChild(section);
+            });
+        }
+        function populateFamilies(data) {
+            const select = document.getElementById("jumpFamily");
+
+            const families = [...new Set(data.map(b => b.family))].sort();
+
+            families.forEach(fam => {
+                const opt = document.createElement("option");
+                opt.value = fam;
+                opt.textContent = fam;
+                select.appendChild(opt);
+            });
+        }
+        function createBirdCard(bird) {
+            const card = document.createElement("div");
+            card.className = "card";
+
+            let currentIndex = 0;
+
+            const img = document.createElement("img");
+            img.src = bird.images[0];
+            img.alt = bird.name;
+            img.style.cursor = "pointer";
+
+            img.addEventListener("click", () => {
+                currentBird = bird;
+                currentImageIndex = 0;
+                openModal();
+            });
+
+            const title = document.createElement("h2");
+            title.textContent = bird.name;
+
+            const controls = document.createElement("div");
+            controls.className = "image-container";
+
+            const prevBtn = document.createElement("button");
+            prevBtn.textContent = "◀";
+
+            const nextBtn = document.createElement("button");
+            nextBtn.textContent = "▶";
+
+            function updateImage(dir) {
+                currentIndex += dir;
+
+                if (currentIndex < 0) currentIndex = bird.images.length - 1;
+                if (currentIndex >= bird.images.length) currentIndex = 0;
+
+                img.src = bird.images[currentIndex];
+            }
+
+            prevBtn.addEventListener("click", () => updateImage(-1));
+            nextBtn.addEventListener("click", () => updateImage(1));
+
+            if (bird.images.length <= 1) {
+                prevBtn.style.display = "none";
+                nextBtn.style.display = "none";
+            }
+
+            controls.appendChild(img);
+            controls.appendChild(prevBtn);
+            controls.appendChild(nextBtn);
+
+            card.appendChild(controls);
+            card.appendChild(title);
+
+            return card;
+        }
+        function debounce(func, delay) {
+            let timeout;
+            return function (...args) {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => func.apply(this, args), delay);
+            };
+        }
+        const searchInput = document.getElementById("search");
+
+        searchInput.addEventListener("input", debounce((e) => {
+            const value = e.target.value.trim().toLowerCase();
+
+            const filtered = allBirds.filter(bird => {
+                return (
+                    (bird.name && bird.name.toLowerCase().includes(value)) ||
+                    (bird.species && bird.species.toLowerCase().includes(value)) ||
+                    (bird.family && bird.family.toLowerCase().includes(value))
+                );
+            });
+
+            renderBirds(filtered);
+
+            document.getElementById("jumpFamily").value = "";
+        }, 200));
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const backToTop = document.getElementById("backToTop");
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    backToTop.style.display = "flex";
+                    backToTop.style.opacity = "1";
+                } else {
+                    backToTop.style.opacity = "0";
+                    setTimeout(() => {
+                        if (window.scrollY <= 200) {
+                            backToTop.style.display = "none";
+                        }
+                    }, 150);
+                }
+            });
+        });
+
+        backToTop.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+
+        document.getElementById("jumpFamily").addEventListener("change", (e) => {
+            const value = e.target.value;
+
+            if (!value) return;
+
+            const el = document.getElementById(`family-${value}`);
+
+            if (el) {
+                el.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+            }
+
+            e.target.value = "";
+        });
+
+        closeBtn.addEventListener("click", () => {
+            modal.style.display = "none";
+        });
+
+        modal.addEventListener("click", (e) => {
+            if (e.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>
