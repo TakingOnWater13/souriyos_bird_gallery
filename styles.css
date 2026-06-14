@@ -86,7 +86,7 @@
   .card button:hover {
       background: #333;
   }
- 
+
 
   .modal {
       display: none;
@@ -161,14 +161,16 @@
       opacity: 0;
       transition: opacity 0.2s ease;
   }
-   @media (hover: none) and (pointer: coarse) {
-    .image-container button {
-        display: none;
-    }
-}
+
 
   .image-container:hover button {
       opacity: 1;
+  }
+   @media (hover: none) and (pointer: coarse) {
+      .image-container button {
+          display: none;
+          opacity: 0;
+      }
   }
 
   .image-container button:first-of-type {
