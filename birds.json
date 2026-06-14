@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [
     {
         "name": "American Goldfinch",
@@ -241,4 +242,249 @@
             "images/WODU2.jpg"
         ]
     }
+=======
+[
+    {
+        "name": "American Goldfinch",
+        "family": "True Finches",
+        "images": [
+            "images/AGOL1.jpg"
+        ]
+    },
+    {
+        "name": "American Robin",
+        "family": "Thrushes",
+        "images": [
+            "images/AMRO1.jpg",
+            "images/AMRO2.jpg"
+        ]
+    },
+    {
+        "name": "American White Pelican",
+        "family": "Pelicans",
+        "images": [
+            "images/AWPE1.jpg",
+            "images/AWPE2.jpg",
+            "images/AWPE3.jpg"
+        ]
+    },
+    {
+        "name": "Black Tern",
+        "family": "Gulls and Terns",
+        "images": [
+            "images/BLTE1.jpg",
+            "images/BLTE2.jpg"
+        ]
+    },
+    {
+        "name": "Blue-Winged Teal",
+        "family": "Waterfowl",
+        "images": [
+            "images/BWTE1.jpg",
+            "images/BWTE2.jpg"
+        ]
+    },
+    {
+        "name": "Chipping Sparrow",
+        "family": "New World Sparrows",
+        "images": [
+            "images/CHSP1.jpg"
+        ]
+    },
+    {
+        "name": "Common Gallinule",
+        "family": "Coots and Rails",
+        "images": [
+            "images/COGA1.jpg",
+            "images/COGA2.jpg"
+        ]
+    },
+    {
+        "name": "Dickcissel",
+        "family": "New World Blackbirds",
+        "images": [
+            "images/DICK1.jpg",
+            "images/DICK2.jpg",
+            "images/DICK3.jpg"
+        ]
+    },
+    {
+        "name": "Downy Woodpecker",
+        "family": "Woodpeckers",
+        "images": [
+            "images/DOWO1.jpg",
+            "images/DOWO2.jpg",
+            "images/DOWO3.jpg"
+        ]
+    },
+    {
+        "name": "Eastern Meadowlark",
+        "family": "New World Blackbirds",
+        "images": [
+            "images/EAME1.jpg",
+            "images/EAME2.jpg",
+            "images/EAME3.jpg",
+            "images/EAME4.jpg"
+        ]
+    },
+    {
+        "name": "Eastern Towhee",
+        "family": "New World Sparrows",
+        "images": [
+            "images/EATO1.jpg"
+        ]
+    },
+    {
+        "name": "Eastern Wood-Pewee",
+        "family": "Tyrant Flycatchers",
+        "images": [
+            "images/EAWP1.jpg"
+        ]
+    },
+    {
+        "name": "European Starling",
+        "family": "Starlings",
+        "images": [
+            "images/EUST1.jpg",
+            "images/EUST2.jpg"
+        ]
+    },
+    {
+        "name": "Gray Catbird",
+        "family": "Mimids",
+        "images": [
+            "images/GRCA1.jpg"
+        ]
+    },
+    {
+        "name": "Great Blue Heron",
+        "family": "Herons and Egrets",
+        "images": [
+            "images/GBHE1.jpg",
+            "images/GBHE2.jpg"
+        ]
+    },
+    {
+        "name": "Great Egret",
+        "family": "Herons and Egrets",
+        "images": [
+            "images/GREG1.jpg"
+        ]
+    },
+    {
+        "name": "House Finch",
+        "family": "True Finches",
+        "images": [
+            "images/HOFI1.jpg",
+            "images/HOFI2.jpg"
+        ]
+    },
+    {
+        "name": "Killdeer",
+        "family": "Plovers",
+        "images": [
+            "images/KILL1.jpg",
+            "images/KILL2.jpg"
+        ]
+    },
+    {
+        "name": "Marbled Godwit",
+        "family": "Sandpipers",
+        "images": [
+            "images/MAGO1.jpg",
+            "images/MAGO2.jpg",
+            "images/MAGO3.jpg"
+        ]
+    },
+    {
+        "name": "Northern Cardinal",
+        "family": "Cardinals",
+        "images": [
+            "images/NOCA1.jpg"
+        ]
+    },
+    {
+        "name": "Northern Flicker",
+        "family": "Woodpeckers",
+        "images": [
+            "images/NOFL1.jpg",
+            "images/NOFL2.jpg"
+        ]
+    },
+    {
+        "name": "Northern Yellow Warbler",
+        "family": "New World Warblers",
+        "images": [
+            "images/YEWA1.jpg",
+            "images/YEWA2.jpg"
+        ]
+    },
+    {
+        "name": "Osprey",
+        "family": "Osprey",
+        "images": [
+            "images/OSPR1.jpg"
+        ]
+    },
+    {
+        "name": "Red-Winged Blackbird",
+        "family": "New World Blackbirds",
+        "images": [
+            "images/RWBL1.jpg",
+            "images/RWBL2.jpg",
+            "images/RWBL3.jpg"
+        ]
+    },
+    {
+        "name": "Sandhill Crane",
+        "family": "Cranes",
+        "images": [
+            "images/SACR1.jpg",
+            "images/SACR2.jpg"
+        ]
+    },
+    {
+        "name": "Song Sparrow",
+        "family": "New World Sparrows",
+        "images": [
+            "images/SOSP1.jpg",
+            "images/SOSP2.jpg",
+            "images/SOSP3.jpg",
+            "images/SOSP4.jpg"
+        ]
+    },
+    {
+        "name": "Tree Swallow",
+        "family": "Swallows",
+        "images": [
+            "images/TRES1.jpg",
+            "images/TRES2.jpg",
+            "images/TRES3.jpg"
+        ]
+    },
+    {
+        "name": "Trumpeter Swan",
+        "family": "Waterfowl",
+        "images": [
+            "images/TRUS1.jpg",
+            "images/TRUS2.jpg",
+            "images/TRUS3.jpg"
+        ]
+    },
+    {
+        "name": "Willow Flycatcher",
+        "family": "Tyrant Flycatchers",
+        "images": [
+            "images/WIFL1.jpg"
+        ]
+    },
+    {
+        "name": "Wood Duck",
+        "family": "Waterfowl",
+        "images": [
+            "images/WODU1.jpg",
+            "images/WODU2.jpg"
+        ]
+    }
+>>>>>>> e046a5a134f4574fb2d505859e17c603ca2493d6
 ]
