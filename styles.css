@@ -166,13 +166,8 @@
   .image-container:hover button {
       opacity: 1;
   }
-  
-   @media (hover: none) and (pointer: coarse) {
-      .image-container button {
-          display: none;
-          opacity: 0;
-      }
-  }
+
+ 
 
   .image-container button:first-of-type {
       left: 5px;
@@ -186,6 +181,12 @@
       background: rgba(0, 0, 0, 0.3);
   }
 
+    @media (hover: none) and (pointer: coarse) {
+      .image-container button {
+          display: none;
+          opacity: 0;
+      }
+  }
   .family-section {
       margin-bottom: 40px;
       scroll-margin-top: 80px;
