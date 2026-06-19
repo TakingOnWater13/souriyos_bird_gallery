@@ -20,7 +20,17 @@
         "images": [
             "images/AWPE1.JPG",
             "images/AWPE2.JPG",
-            "images/AWPE3.JPG"
+            "images/AWPE3.JPG",
+			"images/AWPE4.JPG"
+        ]
+    },
+	{
+        "name": "Black-Necked Stilt",
+        "family": "Stilts and Avocets",
+        "images": [
+            "images/BNST1.JPG",
+            "images/BNST2.JPG",
+			"images/BNST3.JPG"
         ]
     },
     {
@@ -37,6 +47,14 @@
         "images": [
             "images/BWTE1.JPG",
             "images/BWTE2.JPG"
+        ]
+    },
+	 {
+        "name": "Cedar Waxwing",
+        "family": "Waxwings",
+        "images": [
+            "images/CEWA1.JPG",
+            "images/CEWA2.JPG"
         ]
     },
     {
@@ -116,7 +134,8 @@
         "family": "Herons and Egrets",
         "images": [
             "images/GBHE1.JPG",
-            "images/GBHE2.JPG"
+            "images/GBHE2.JPG",
+			"images/GBHE3.JPG"
         ]
     },
     {
@@ -238,7 +257,8 @@
         "family": "Waterfowl",
         "images": [
             "images/WODU1.JPG",
-            "images/WODU2.JPG"
+            "images/WODU2.JPG",
+			"images/WODU3.JPG"
         ]
     }
 ]
